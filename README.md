@@ -6,8 +6,6 @@
 
 PC端自用日常任务清理助手：DoroHelper。支持国际服和港澳台服客户端。支持多开。
 
-![image](https://github.com/kyokakawaii/DoroHelper/blob/dev/img/preview.png)
-
 
 ### 叠甲：
 
