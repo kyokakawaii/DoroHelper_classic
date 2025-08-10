@@ -1,0 +1,4 @@
+*.exe
+*.ini
+lib/
+myver/
