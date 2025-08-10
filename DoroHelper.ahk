@@ -20,7 +20,7 @@ colorTolerance := 15
 
 currentVersion := "v0.1.16.5"
 usr := "kyokakawaii"
-repo := "DoroHelper"
+repo := "DoroHelper_classic"
 
 
 ;utilities

@@ -1,3 +1,9 @@
+# 注意
+
+这里是DoroHelper的老版本。因为作者比较忙，老版本基本不会添加新功能。
+新版本添加了大量新功能，且有新作者及时维护。详见<https://github.com/1204244136/DoroHelper/>
+
+
 # 免责声明
 
 本项目仅供个人学习研究使用，严禁用于商业用途。除Github以外其他任何网站、社交平台中有关本项目的内容**均非本人发布**，若造成侵犯著作权、版权或违反网络安全法规等任何后果，均与本人无关。
@@ -105,8 +111,8 @@ PC端自用日常任务清理助手：DoroHelper。支持国际服和港澳台�
 
 可以尝试设置得和我一样：
 
-![image](https://github.com/kyokakawaii/DoroHelper/blob/67486160e97713900c43cc2c68e176dd65e1f442/img/setting1.png)
-![image](https://github.com/kyokakawaii/DoroHelper/blob/67486160e97713900c43cc2c68e176dd65e1f442/img/setting2.png)
+![image](https://github.com/kyokakawaii/DoroHelper_classic/blob/main/img/setting1.png)
+![image](https://github.com/kyokakawaii/DoroHelper_classic/blob/main/img/setting2.png)
 
 # 借物表
 
