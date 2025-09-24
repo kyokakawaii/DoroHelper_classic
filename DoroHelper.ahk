@@ -18,7 +18,7 @@ stdScreenH := 2160
 waitTolerance := 50
 colorTolerance := 15
 
-currentVersion := "v0.1.16.5"
+currentVersion := "v0.1.16.7"
 usr := "kyokakawaii"
 repo := "DoroHelper_classic"
 
@@ -1382,9 +1382,12 @@ SimulationRoom()
     stdCkptY := [1122, 1094]
     desiredColor := ["0xF8FCFD", "0xF8FCFD"]
 
+    global isOverclockRefreshed
+
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
         UserClick(stdTargetX, stdTargetY, scrRatio)
         Sleep sleepTime
+        ;TODO查看是否刷新超频
         if A_Index > waitTolerance {
             MsgBox "进入模拟室失败！"
             ExitApp
@@ -1393,8 +1396,6 @@ SimulationRoom()
 
     ;查看是否刷新超频
     Sleep sleepTime
-
-    global isOverclockRefreshed
 
     stdCkptX := [1878]
     stdCkptY := [1732]
@@ -1412,11 +1413,14 @@ SimulationRoom()
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [2054, 2331]
-    stdCkptY := [719, 746]
-    desiredColor := ["0xF8FBFD", "0xF8FBFD"]
+    stdCkptX := [1406]
+    stdCkptY := [1845]
+    desiredColor := ["0x04AEF4"]
 
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        if UserCheckColor([1878], [1732], ["0xEA5148"], scrRatio) {
+            isOverclockRefreshed := 1
+        }
         UserClick(stdTargetX, stdTargetY, scrRatio)
         Sleep sleepTime
         if A_Index > waitTolerance {
@@ -1426,15 +1430,15 @@ SimulationRoom()
     }
 
     ;选择5C
-    stdTargetX := 2127
-    stdTargetY := 1074
+    stdTargetX := 2325
+    stdTargetY := 776
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime // 2
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime // 2
 
-    stdTargetX := 2263
-    stdTargetY := 1307
+    stdTargetX := 2265
+    stdTargetY := 1214
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime // 2
     UserClick(stdTargetX, stdTargetY, scrRatio)
@@ -1443,13 +1447,13 @@ SimulationRoom()
     
     ;点击开始模拟
     ;开始模拟
-    stdTargetX := 2216
-    stdTargetY := 1818
+    stdTargetX := 2210
+    stdTargetY := 1870
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1991]
-    stdCkptY := [1814]
+    stdCkptX := [1974]
+    stdCkptY := [1838]
     desiredColor := ["0xFA801A"]
 
     while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
@@ -1915,8 +1919,8 @@ SimulationRoom()
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime // 2
 
-    stdCkptX := [1420, 2335]
-    stdCkptY := [1243, 1440]
+    stdCkptX := [1420, 2337]
+    stdCkptY := [1204, 1393]
     desiredColor := ["0xFFFFFF", "0xFE0203"]
 
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
@@ -2470,7 +2474,7 @@ LoveTalking(times)
         while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
             UserClick(stdTargetX, stdTargetY, scrRatio)
             Sleep sleepTime
-            if A_Index + numOfTalked >= times + 2
+            if A_Index + numOfTalked >= times + 5
                 break 2
             if A_Index > waitTolerance {
                 MsgBox "咨询失败！"
@@ -3946,7 +3950,7 @@ doroGui.Opt("+Resize")
 doroGui.MarginY := Round(doroGui.MarginY * 0.9)
 doroGui.SetFont("cred s15")
 doroGui.Add("Text", "R1", "紧急停止按ctrl + 1")
-doroGui.Add("Link"," R1", '<a href="https://github.com/kyokakawaii/DoroHelper">项目地址</a>')
+doroGui.Add("Link"," R1", '<a href="https://github.com/kyokakawaii/DoroHelper_classic">项目地址</a>')
 doroGui.SetFont()
 doroGui.Add("Button", "R1 x+10", "帮助").OnEvent("Click", ClickOnHelp)
 doroGui.Add("Button","R1 x+10","检查怀旧版更新").OnEvent("Click", ClickOnCheckForUpdate)
