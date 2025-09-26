@@ -18,7 +18,7 @@ stdScreenH := 2160
 waitTolerance := 50
 colorTolerance := 15
 
-currentVersion := "v0.1.16.7"
+currentVersion := "v0.1.16.8"
 usr := "kyokakawaii"
 repo := "DoroHelper_classic"
 
@@ -1378,8 +1378,8 @@ SimulationRoom()
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1829, 2024]
-    stdCkptY := [1122, 1094]
+    stdCkptX := [1764, 2024]
+    stdCkptY := [1087, 1094]
     desiredColor := ["0xF8FCFD", "0xF8FCFD"]
 
     global isOverclockRefreshed
