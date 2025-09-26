@@ -1919,9 +1919,9 @@ SimulationRoom()
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime // 2
 
-    stdCkptX := [1420, 2337]
-    stdCkptY := [1204, 1393]
-    desiredColor := ["0xFFFFFF", "0xFE0203"]
+    stdCkptX := [1420, 3713]
+    stdCkptY := [1204, 2035]
+    desiredColor := ["0xFFFFFF", "0xE6E6E6"]
 
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
         ;UserClick(stdTargetX, stdTargetY - 300, scrRatio)
