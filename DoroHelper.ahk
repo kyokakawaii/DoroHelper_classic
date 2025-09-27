@@ -18,7 +18,7 @@ stdScreenH := 2160
 waitTolerance := 50
 colorTolerance := 15
 
-currentVersion := "v0.1.16.8"
+currentVersion := "v0.1.16.9"
 usr := "kyokakawaii"
 repo := "DoroHelper_classic"
 
