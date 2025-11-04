@@ -18,7 +18,7 @@ stdScreenH := 2160
 waitTolerance := 50
 colorTolerance := 15
 
-currentVersion := "v0.1.16.9"
+currentVersion := "v0.1.16.13"
 usr := "kyokakawaii"
 repo := "DoroHelper_classic"
 
@@ -1340,6 +1340,21 @@ Mail()
 
 ;=============================================================
 ;6: 模拟室5C
+checkOverClockRefresh()
+{
+    stdTargetX := 1914
+    stdTargetY := 1271
+    stdCkptX := [2020, 1814]
+    stdCkptY := [1257, 1299]
+    desiredColor := ["0x9D2925", "0x9D2A25"]
+
+    while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime
+    }
+}
+
+
 SimulationRoom()
 {
     stdTargetX := 2689
@@ -1378,9 +1393,9 @@ SimulationRoom()
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime
 
-    stdCkptX := [1764, 2024]
-    stdCkptY := [1087, 1094]
-    desiredColor := ["0xF8FCFD", "0xF8FCFD"]
+    stdCkptX := [1764, 2024, 222]
+    stdCkptY := [1087, 1094, 889]
+    desiredColor := ["0xF8FCFD", "0xF8FCFD", "0x000000"]
 
     global isOverclockRefreshed
 
@@ -1388,6 +1403,7 @@ SimulationRoom()
         UserClick(stdTargetX, stdTargetY, scrRatio)
         Sleep sleepTime
         ;TODO查看是否刷新超频
+        checkOverClockRefresh()
         if A_Index > waitTolerance {
             MsgBox "进入模拟室失败！"
             ExitApp
@@ -1396,6 +1412,8 @@ SimulationRoom()
 
     ;查看是否刷新超频
     Sleep sleepTime
+
+    checkOverClockRefresh()
 
     stdCkptX := [1878]
     stdCkptY := [1732]
@@ -1418,6 +1436,7 @@ SimulationRoom()
     desiredColor := ["0x04AEF4"]
 
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        checkOverClockRefresh()
         if UserCheckColor([1878], [1732], ["0xEA5148"], scrRatio) {
             isOverclockRefreshed := 1
         }
@@ -1442,7 +1461,19 @@ SimulationRoom()
     UserClick(stdTargetX, stdTargetY, scrRatio)
     Sleep sleepTime // 2
     UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime // 2
+    Sleep sleepTime
+
+    ;打开快速模拟
+    stdCkptX := [1833]
+    stdCkptY := [1689]
+    desiredColor := ["0x18AFF4"]
+    stdTargetX := 1888
+    stdTargetY := 1691
+
+    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        UserClick(stdTargetX, stdTargetY, scrRatio)
+        Sleep sleepTime
+    }
 
     
     ;点击开始模拟
@@ -1465,6 +1496,7 @@ SimulationRoom()
         }
     }
 
+
     stdTargetX := 1903
     stdTargetY := 1369
     stdCkptX := [304]
@@ -1474,6 +1506,37 @@ SimulationRoom()
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
         UserClick(stdTargetX, stdTargetY, scrRatio)
         Sleep sleepTime
+
+        ;如果直接快速模拟完成
+        if UserCheckColor([1709, 2134, 1971], [1515, 1517, 1817], ["0xEFF2F5", "0xEFF2F5", "0x603004"], scrRatio) {
+
+            while UserCheckColor([1709, 2134, 1971], [1515, 1517, 1817], ["0xEFF2F5", "0xEFF2F5", "0x603004"], scrRatio) {
+                UserClick(1916, 1542, scrRatio)
+                Sleep sleepTime
+            }
+
+            ;退回大厅
+            stdTargetX := 333
+            stdTargetY := 2041
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+
+            stdCkptX := [64]
+            stdCkptY := [470]
+            desiredColor := ["0xFAA72C"]
+
+            while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+                UserClick(stdTargetX, stdTargetY, scrRatio)
+                Sleep sleepTime
+                if A_Index > waitTolerance {
+                    MsgBox "退回大厅失败！"
+                    ExitApp
+                }
+            }
+
+            return
+        }
+
         if A_Index > waitTolerance {
             MsgBox "进入buff选择页面失败！"
             ExitApp
@@ -2277,9 +2340,9 @@ LoveTalking(times)
         }
     }
 
-    stdCkptX := [1466, 1814]
+    stdCkptX := [1447, 1845]
     stdCkptY := [428, 433]
-    desiredColor := ["0x3B3C3E", "0x3B3C3E"]
+    desiredColor := ["0x3A3B3D", "0x3B3C3E"]
 
     while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
         Sleep sleepTime
@@ -3203,9 +3266,9 @@ EnterInterception()
     if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
         stdTargetX := 2219
         stdTargetY := 1992
-        stdCkptX := [1962]
-        stdCkptY := [1932]
-        desiredColor := ["0xD52013"]
+        stdCkptX := [1978]
+        stdCkptY := [1939]
+        desiredColor := ["0xEC2E15"]
 
         while UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
             UserClick(stdTargetX, stdTargetY, scrRatio)
@@ -3243,6 +3306,23 @@ EnterInterception()
             }
         }
         */
+    } 
+    else {
+        stdTargetX := 2226
+        stdTargetY := 1817
+
+        stdCkptX := [1981, 2463]
+        stdCkptY := [1795, 1791]
+        desiredColor := ["0x656768", "0x656668"]
+
+        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+            if A_Index > waitTolerance {
+                MsgBox "每周快速战斗失败！"
+                ExitApp
+            }
+        }
     }
 
     /*
@@ -3641,8 +3721,8 @@ ClickOnDoro(*)
         if isCheckedFreeShop
             FreeShop(numOfBook)
 
-        if isCheckedOutposeDefence
-            OutpostDefence()
+        ;if isCheckedOutposeDefence
+        ;    OutpostDefence()
 
         if isCheckedExpedtion
             Expedition()
