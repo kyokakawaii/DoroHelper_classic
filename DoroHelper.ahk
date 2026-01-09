@@ -18,7 +18,7 @@ stdScreenH := 2160
 waitTolerance := 50
 colorTolerance := 15
 
-currentVersion := "v0.1.16.13"
+currentVersion := "v0.1.16.14"
 usr := "kyokakawaii"
 repo := "DoroHelper_classic"
 
@@ -2151,25 +2151,35 @@ RookieArena(times)
     }
 
     ;收pjjc菜
-    if sleepTime < 1500
-        Sleep 1000
+    Sleep 1500
 
-    stdTargetX := 2261
-    stdTargetY := 956
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
-    UserClick(stdTargetX, stdTargetY, scrRatio)
-    Sleep sleepTime
+    stdCkptX := [2258]
+    stdCkptY := [1017]
+    desiredColor := ["0x0D181F"]
+    if !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+        
+        
+        stdTargetX := 2261
+        stdTargetY := 956
+        stdCkptX := [1961]
+        stdCkptY := [1880]
+        desiredColor := ["0x0E9FE3"]
+        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+        }
 
-    stdCkptX := [1607]
-    stdCkptY := [283]
-    desiredColor := ["0x01D4F6"]
+        stdCkptX := [1607]
+        stdCkptY := [283]
+        desiredColor := ["0x01D4F6"]
 
-    stdTargetX := 2129
-    stdTargetY := 1920
-    while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
-        UserClick(stdTargetX, stdTargetY, scrRatio)
-        Sleep sleepTime
+        stdTargetX := 2129
+        stdTargetY := 1920
+        while !UserCheckColor(stdCkptX, stdCkptY, desiredColor, scrRatio) {
+            UserClick(stdTargetX, stdTargetY, scrRatio)
+            Sleep sleepTime
+        }
+
     }
 
     ;进入竞技场
@@ -4078,6 +4088,10 @@ doroGui.Show()
 
 ^1::{
     ExitApp
+}
+
+^2::{
+    Pause -1
 }
 
 
